@@ -27,9 +27,9 @@ organizations:
     certificateAuthorities:
       - ca-hospital1
     adminPrivateKey:
-      path: ../crypto-config/peerOrganizations/hospital1.switch2logic.co.za/users/Admin@hospital1.switch2logic.co.za/msp/keystore/886e1ce74760b8f991f02b47bbabaaf6ff019894c1c7316e45bf6c982bdf26c1_sk
+      path: ./crypto-config/peerOrganizations/hospital1.switch2logic.co.za/users/Admin@hospital1.switch2logic.co.za/msp/keystore/9ab3187dc8506e5017c85daaddc54cba106040694432fa92ef4cb217774dec2d_sk
     signedCert:
-      path: ../crypto-config/peerOrganizations/hospital1.switch2logic.co.za/users/Admin@hospital1.switch2logic.co.za/msp/signcerts/Admin@hospital1.switch2logic.co.za-cert.pem
+      path: ./crypto-config/peerOrganizations/hospital1.switch2logic.co.za/users/Admin@hospital1.switch2logic.co.za/msp/signcerts/Admin@hospital1.switch2logic.co.za-cert.pem
 
   Hospital2:
     mspid: Hospital2MSP
@@ -38,9 +38,9 @@ organizations:
     certificateAuthorities:
       - ca-hospital2
     adminPrivateKey:
-      path: ../crypto-config/peerOrganizations/hospital2.switch2logic.co.za/users/Admin@hospital2.switch2logic.co.za/msp/keystore/f2dabe474312d3297e693af0b1c8ff53216db9bcfe54c4d4922e1d00e6a83712_sk
+      path: ./crypto-config/peerOrganizations/hospital2.switch2logic.co.za/users/Admin@hospital2.switch2logic.co.za/msp/keystore/e103e8c66f55d4d7ef748c921e80615e1f0eab9dd34beea5606cb5a7f240a16d_sk
     signedCert:
-      path: ../crypto-config/peerOrganizations/hospital2.switch2logic.co.za/users/Admin@hospital2.switch2logic.co.za/msp/signcerts/Admin@hospital2.switch2logic.co.za-cert.pem
+      path: ./crypto-config/peerOrganizations/hospital2.switch2logic.co.za/users/Admin@hospital2.switch2logic.co.za/msp/signcerts/Admin@hospital2.switch2logic.co.za-cert.pem
 
 orderers:
   orderer0.hospital1.switch2logic.co.za:
@@ -49,7 +49,7 @@ orderers:
       ssl-target-name-override: orderer0.hospital1.switch2logic.co.za
       grpc-max-send-message-length: 15
     tlsCACerts:
-      path: ../crypto-config/ordererOrganizations/switch2logic.co.za/orderers/orderer0.hospital1.switch2logic.co.za/tlscacerts/msp/tlsca.switch2logic.co.za-cert.pem
+      path: ./crypto-config/ordererOrganizations/switch2logic.co.za/orderers/orderer0.hospital1.switch2logic.co.za/msp/tlscacerts/tlsca.switch2logic.co.za-cert.pem
 
   orderer0.hospital2.switch2logic.co.za:
     url: grpcs://orderer0.hospital2.switch2logic.co.za:7050
@@ -57,7 +57,7 @@ orderers:
       ssl-target-name-override: orderer0.hospital2.switch2logic.co.za
       grpc-max-send-message-length: 15
     tlsCACerts:
-      path: ../crypto-config/ordererOrganizations/switch2logic.co.za/orderers/orderer0.hospital2.switch2logic.co.za/tlscacerts/msp/tlsca.switch2logic.co.za-cert.pem
+      path: ./crypto-config/ordererOrganizations/switch2logic.co.za/orderers/orderer0.hospital2.switch2logic.co.za/msp/tlscacerts/tlsca.switch2logic.co.za-cert.pem
 
   orderer0.hospital3.switch2logic.co.za:
     url: grpcs://orderer0.hospital3.switch2logic.co.za:7050
@@ -65,7 +65,7 @@ orderers:
       ssl-target-name-override: orderer0.hospital3.switch2logic.co.za
       grpc-max-send-message-length: 15
     tlsCACerts:
-      path: ../crypto-config/ordererOrganizations/switch2logic.co.za/orderers/orderer0.hospital3.switch2logic.co.za/tlscacerts/msp/tlsca.switch2logic.co.za-cert.pem
+      path: ./crypto-config/ordererOrganizations/switch2logic.co.za/orderers/orderer0.hospital3.switch2logic.co.za/msp/tlscacerts/tlsca.switch2logic.co.za-cert.pem
 
 peers:
   peer0.hospital1.switch2logic.co.za:
@@ -75,7 +75,7 @@ peers:
       ssl-target-name-override: peer0.hospital1.switch2logic.co.za
       grpc.keepalive_time_ms: 600000
     tlsCACerts:
-      path: ../crypto-config/peerOrganizations/hospital1.switch2logic.co.za/peers/peer0.hospital1.switch2logic.co.za/msp/tlscacerts/tlsca.hospital1.switch2logic.co.za-cert.pem
+      path: ./crypto-config/peerOrganizations/hospital1.switch2logic.co.za/peers/peer0.hospital1.switch2logic.co.za/msp/tlscacerts/tlsca.hospital1.switch2logic.co.za-cert.pem
 
   peer0.hospital2.switch2logic.co.za:
     url: grpcs://peer2.swicth2logic.co.za:7051
@@ -83,7 +83,7 @@ peers:
     grpcOptions:
       ssl-target-name-override: peer0.hospital2.switch2logic.co.za
     tlsCACerts:
-      path: ../crypto-config/peerOrganizations/hospital2.switch2logic.co.za/peers/peer0.hospital2.switch2logic.co.za/msp/tlscacerts/tlsa.hospital2.switch2logic.co.za-cert.pem
+      path: ./crypto-config/peerOrganizations/hospital2.switch2logic.co.za/peers/peer0.hospital2.switch2logic.co.za/msp/tlscacerts/tlsca.hospital2.switch2logic.co.za-cert.pem
 
 certificateAuthorities:
   ca-hospital1:
@@ -91,7 +91,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../crypto-config/peerOrganizations/hospital1.switch2logic.co.za/ca/ca.hospital1.switch2logic.co.za-cert.pem
+      path: ./crypto-config/peerOrganizations/hospital1.switch2logic.co.za/ca/ca.hospital1.switch2logic.co.za-cert.pem
     registrar:
       - enrollId: admin
         enrollSecret: adminpw
@@ -102,7 +102,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: ../crypto-config/peerOrganizations/hospital2.switch2logic.co.za/ca/hospital2.switch2logic.co.za-cert.pem
+      path: ./crypto-config/peerOrganizations/hospital2.switch2logic.co.za/ca/ca.hospital2.switch2logic.co.za-cert.pem
     registrar:
       - enrollId: admin
         enrollSecret: adminpw

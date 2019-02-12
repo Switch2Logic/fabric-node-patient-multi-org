@@ -57,7 +57,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	fabric_client.setCryptoSuite(crypto_suite);
 
 	// get the enrolled user from persistence, this user will sign all requests
-	return fabric_client.getUserContext('user1', true);
+	return fabric_client.getUserContext('developer4', true);
 }).then((user_from_store) => {
 	if (user_from_store && user_from_store.isEnrolled()) {
 		console.log('Successfully loaded user1 from persistence');
@@ -70,15 +70,19 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	tx_id = fabric_client.newTransactionID();
 	console.log("Assigning transaction_id: ", tx_id._transaction_id);
 
-	// createCar chaincode function - requires 5 args, ex: args: ['CAR12', 'Honda', 'Accord', 'Black', 'Tom'],
-	// changeCarOwner chaincode function - requires 2 args , ex: args: ['CAR10', 'Dave'],
-	// must send the proposal to endorsing peers
+	var buff = Buffer.from(JSON.stringify({"patientID":"o21","patientName":"Foo","patientSurname":"Bar","patientFileURL":"Transient completed"})).toString("base64");
+
+
+	const transient_data = {
+		'patient_details': buff, 
+	};
+
 	var request = {
-		//targets: let default to the peer assigned to the client
-		chaincodeId: 'patient5',
-		fcn: 'addDoctor',
-		args: ['122', 'Foo', 'Baar', 'https://the.icon'],
+		chaincodeId: 'patient_privatev9',
+		fcn: 'addPatientPrivate',
+		args: [],
 		chainId: 'comunitychannel',
+		transientMap: transient_data,
 		txId: tx_id
 	};
 

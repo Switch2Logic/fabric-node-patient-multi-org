@@ -1,8 +1,16 @@
 var FabricClient = require('fabric-client');
 var fs = require('fs');
 var path = require('path');
-var configFilePath = path.join(__dirname, '/config/ConnectionProfile.yml');
+var configFilePath = path.join(__dirname, '/config/connection-profile.yaml');
+var store_path = path.join(__dirname, 'hfc-key-store');
 const CONFIG = fs.readFileSync(configFilePath, 'utf8')
+
+//TLS Certs
+let serverCert = fs.readFileSync(path.join(__dirname, '/crypto-config/peerOrganizations/hospital1.switch2logic.co.za/peers/peer0.hospital1.switch2logic.co.za/msp/tlscacerts/tlsca.hospital1.switch2logic.co.za-cert.pem'));
+let clientKey = fs.readFileSync(path.join(__dirname, '/crypto-config/peerOrganizations/hospital1.switch2logic.co.za/users/User1@hospital1.switch2logic.co.za/tls/client.key'));
+let clientCert = fs.readFileSync(path.join(__dirname, '/crypto-config/peerOrganizations/hospital1.switch2logic.co.za/users/User1@hospital1.switch2logic.co.za/tls/client.crt'));
+
+
 class FBClient extends FabricClient {
     constructor(props) {
         super(props);
@@ -102,7 +110,10 @@ class FBClient extends FabricClient {
             return resultData;
         });
     }
+
+  
 }
 var fabricClient = new FBClient();
 fabricClient.loadFromConfig(configFilePath);
+fabricClient.setTlsClientCertAndKey(Buffer.from(clientCert).toString(), Buffer.from(clientKey).toString());
 module.exports = fabricClient;

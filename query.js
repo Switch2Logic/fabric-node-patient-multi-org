@@ -49,7 +49,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	fabric_client.setCryptoSuite(crypto_suite);
 
 	// get the enrolled user from persistence, this user will sign all requests
-	return fabric_client.getUserContext('user1', true);
+	return fabric_client.getUserContext('developer5', true);
 }).then((user_from_store) => {
 	if (user_from_store && user_from_store.isEnrolled()) {
 		console.log('Successfully loaded user1 from persistence');
@@ -62,9 +62,9 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	// queryAllCars chaincode function - requires no arguments , ex: args: [''],
 	const request = {
 		//targets : --- letting this default to the peers assigned to the channel
-		chaincodeId: 'patient5',
-		fcn: 'getPatient',
-		args: ['testkey']
+		chaincodeId: 'patient_privatev9',
+		fcn: 'getPatientHistory',
+		args: ['s21']
 	};
 
 	// send the query proposal to the peer
